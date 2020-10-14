@@ -1,3 +1,6 @@
+# Local file backups
+**/*.bak
+
 # Prerequisites
 *.d
 
