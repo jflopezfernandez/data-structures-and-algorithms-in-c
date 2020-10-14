@@ -20,6 +20,27 @@ void print_array(long int* array, size_t n) {
     printf("\n");
 }
 
+long int* bubble_sort(long int* input_array, size_t n) {
+    long int* sorted_array = allocate_memory(sizeof (long int) * n);
+
+    /** Copy the input array to the sorted array before sorting */
+    for (size_t i = 0; i < n; ++i) {
+        sorted_array[i] = input_array[i];
+    }
+
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t j = 0; j < n; ++j) {
+            if (sorted_array[i] < sorted_array[j]) {
+                long int temp = sorted_array[i];
+                sorted_array[i] = sorted_array[j];
+                sorted_array[j] = temp;
+            }
+        }
+    }
+
+    return sorted_array;
+}
+
 long int* counting_sort(long int* input_array, size_t n) {
     /** Find the maximum element in the input array */
     long int maximum = 0;
@@ -59,6 +80,8 @@ long int* counting_sort(long int* input_array, size_t n) {
     return sorted_input;
 }
 
+typedef long int* (*sort_function_t)(long int*, size_t);
+
 int main(int argc, char *argv[])
 {
     if (argc == 1) {
@@ -79,8 +102,9 @@ int main(int argc, char *argv[])
         }
     }
 
-    
-    long int* sorted_array = counting_sort(input_array, argc - 1);
+    sort_function_t sort_function = bubble_sort;
+
+    long int* sorted_array = sort_function(input_array, argc - 1);
 
     /** Print the original input array */
     print_array(input_array, argc - 1);
