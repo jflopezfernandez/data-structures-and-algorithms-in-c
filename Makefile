@@ -1,13 +1,13 @@
 
 vpath %.c src
 
-RM := rm -f
+RM       := rm -f
 
-CC := gcc
-CFLAGS := -std=c17 -Wall -Wextra -Wpedantic #-O0 -ggdb -g3 -fanalyzer -fsanitize=address -fstack-protector-strong
+CC       := gcc
+CFLAGS   := -std=c17 -Wall -Wextra -Wpedantic -O0 -ggdb -g3 -fanalyzer -fsanitize=address,leak,undefined -fstack-protector-strong
 CPPFLAGS := -Iinclude -D_GNU_SOURCE
-LDFLAGS := -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now,--error-unresolved-symbols #,-L/home/jflopezfernandez/projects/c/jlibc,-rpath,/home/jflopezfernandez/projects/c/jlibc
-LIBS := -ljc
+LDFLAGS  := -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now,--error-unresolved-symbols #,-L/home/jflopezfernandez/projects/c/jlibc,-rpath,/home/jflopezfernandez/projects/c/jlibc
+LIBS     :=
 
 CPPFLAGS := $(CPPFLAGS) #-I/home/jflopezfernandez/projects/c/jlibc/include
 LDFLAGS := $(LDFLAGS) #-L/home/jflopezfernandez/projects/c/jlibc
