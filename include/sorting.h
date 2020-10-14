@@ -17,23 +17,13 @@
  *
  */
 
-#ifndef PROJECT_INCLUDES_DATA_STRUCTURES_AND_ALGORITHMS_H
-#define PROJECT_INCLUDES_DATA_STRUCTURES_AND_ALGORITHMS_H
+#ifndef PROJECT_INCLUDES_SORTING_H
+#define PROJECT_INCLUDES_SORTING_H
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <errno.h>
+long int* bubble_sort(long int* input_array, size_t n);
 
-#if defined(JLIBC_ENABLED)
-#include <jlibc/jlibc.h>
-#include <jlibc/memory.h>
-#endif
+long int* counting_sort(long int* input_array, size_t n);
 
-#include "memory.h"
-#include "sorting.h"
+typedef long int* (*sort_function_t)(long int*, size_t);
 
-#endif /** PROJECT_INCLUDES_DATA_STRUCTURES_AND_ALGORITHMS_H */
+#endif /** PROJECT_INCLUDES_SORTING_H */
